@@ -26,6 +26,7 @@ cada material.
         System.out.println("=========CATALOGO BIBLIOTECA============");
         for (Material material : catalogo.values()) {
             material.mostrarInfo();
+            System.out.println("_________________________________");
         }
     }
 
@@ -40,7 +41,7 @@ usuario al final.
             System.out.println("El material con codigo "+ codigoMaterial+ " no se encuentra disponible.");
         }else{
             if(listaEspera.containsKey(codigoMaterial)){
-                listaEspera.get(codigoMaterial).addLast(usuario);
+                listaEspera.get(codigoMaterial).add(usuario);
                 System.out.println("Se agrega a la lista de espera.");
                 mostrarLista(listaEspera.get(codigoMaterial));
             }else{
@@ -62,10 +63,10 @@ de la lista*/
 
     public void  siguienteEnEspera(String codigoMaterial){
         if (existeMaterial(codigoMaterial)){
-            catalogo.get(codigoMaterial);
-            String primero = listaEspera.get(codigoMaterial).getFirst();
-            catalogo.remove(primero);
+            String primero = listaEspera.get(codigoMaterial).get(0);
+            listaEspera.get(codigoMaterial).remove(0);
             System.out.println(" El usuario "+ primero+ " ha sido removido de la lista de espera.");
+            System.out.println(listaEspera);
         }else{
             System.out.println("El codigo proporcionado no existe en el sistema.");
         }
