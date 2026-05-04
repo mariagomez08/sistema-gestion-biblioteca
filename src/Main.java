@@ -22,6 +22,10 @@ public class Main {
         sistema.agregarEspera("R01", "Jorge");
 
         sistema.siguienteEnEspera("L01");
+        System.out.println(sistema.registrarMiembro("Julian"));
+        System.out.println(sistema.registrarMiembro("Julian"));
+        System.out.println(sistema.tieneMembresia("Julian"));
+        System.out.println(sistema.tieneMembresia("Marcela"));
 
 
         /*

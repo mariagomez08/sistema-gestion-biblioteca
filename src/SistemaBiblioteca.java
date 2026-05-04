@@ -1,12 +1,10 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class SistemaBiblioteca {
 
     private Map<String, Material> catalogo = new HashMap<>();
     private Map<String, List<String>> listaEspera = new HashMap<>();
+    private Set<String> miembros = new HashSet<>();
     /*
 En SistemaBiblioteca crea: Map catalogo = new HashMap<>(). Agrega un método
 registrarMaterial(Material m) que use put() con el codigo como clave. Agrega
@@ -37,9 +35,8 @@ codigoMaterial, String usuario): si el material no tiene lista aún, créala. Si
 usuario al final.
      */
     public void agregarEspera(String codigoMaterial, String usuario){
-        boolean existeMaterial = catalogo.containsKey(codigoMaterial);
 
-        if (!existeMaterial){
+        if (!existeMaterial(codigoMaterial)){
             System.out.println("El material con codigo "+ codigoMaterial+ " no se encuentra disponible.");
         }else{
             if(listaEspera.containsKey(codigoMaterial)){
@@ -64,9 +61,42 @@ usuario al final.
 de la lista*/
 
     public void  siguienteEnEspera(String codigoMaterial){
-        catalogo.get(codigoMaterial);
-        String primero = listaEspera.get(codigoMaterial).getFirst();
-        catalogo.remove(primero);
-        System.out.println(" El usuario "+ primero+ "ha sido removido de la lista de espera.");
+        if (existeMaterial(codigoMaterial)){
+            catalogo.get(codigoMaterial);
+            String primero = listaEspera.get(codigoMaterial).getFirst();
+            catalogo.remove(primero);
+            System.out.println(" El usuario "+ primero+ " ha sido removido de la lista de espera.");
+        }else{
+            System.out.println("El codigo proporcionado no existe en el sistema.");
+        }
+
     }
+
+    /*
+    En SistemaBiblioteca crea: Set miembros = new HashSet<>(). Agrega registrarMiembro(String
+usuario): usa add() y retorna el boolean — true si era nuevo, false si ya existía. Agrega
+tieneMembresía(String usuario): usa contains()
+     */
+    public boolean registrarMiembro(String usuario){
+        if(miembros.contains(usuario)){
+            return false;
+        }else{
+            return miembros.add(usuario);
+        }
+    }
+    public String tieneMembresia(String usuario){
+        if(miembros.contains(usuario)){
+            return "El usuario " + usuario + " ya cuenta con membresia.";
+        }else{
+            return "El usuario " + usuario+ " no tiene membresia.";
+        }
+    }
+
+    //Metodo para conocer si un material está disponilble por codigo.
+    private boolean existeMaterial(String codigo){
+        boolean existeMaterial = catalogo.containsKey(codigo);
+        return existeMaterial;
+    }
+
+
 }
