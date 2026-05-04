@@ -88,7 +88,7 @@ tieneMembresía(String usuario): usa contains()
         if(miembros.contains(usuario)){
             return "El usuario " + usuario + " ya cuenta con membresia.";
         }else{
-            return "El usuario " + usuario+ " no tiene membresia.";
+            return "El usuario " + usuario+ " no tiene membresia. ";
         }
     }
 
