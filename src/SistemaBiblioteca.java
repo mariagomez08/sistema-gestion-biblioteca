@@ -11,8 +11,14 @@ registrarMaterial(Material m) que use put() con el codigo como clave. Agrega
 buscarMaterial(String codigo) que use get() y retorne el material o null.
      */
     public void registrarMaterial(Material m){
-        catalogo.put(m.getCodigoMaterial(), m);
-        System.out.println("Material registrado exitosamente!"+ m.getCodigoMaterial());
+
+        if(existeMaterial(m.getCodigoMaterial())){
+            System.out.println("El material ya existe!");
+        }else{
+            catalogo.put(m.getCodigoMaterial(), m);
+            System.out.println("Material registrado exitosamente!"+ m.getCodigoMaterial());
+        }
+
     }
     public Material buscarMaterial(String codigo){
         return catalogo.get(codigo);

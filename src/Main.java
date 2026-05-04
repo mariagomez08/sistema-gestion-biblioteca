@@ -9,6 +9,7 @@ public class Main {
 
         Material libro1 = new Libro("L01", "Orgullo y prejuicio",1800,true, "Jane Austen", "9788484284888");
         Material libro2 = new Libro("L02", "El tunel",1950,true, "Ernesto sabato", "9788484284889");
+        Material libro3 = new Libro("L02", "El tunel",1980,true, "Ernesto sabato", "9788484284889");
 
         Material revista1 = new Revista("R01", "Semana",2026,true, 3, "Social");
         Material revista2 = new Revista("R02", "Tv novelas",2026,true, 4, "chismes");
@@ -18,6 +19,7 @@ public class Main {
         System.out.println("====== MATERIALES REGISTRADOS=========");
         sistema.registrarMaterial(libro1);
         sistema.registrarMaterial(libro2);
+        sistema.registrarMaterial(libro3);
         sistema.registrarMaterial(revista1);
         sistema.registrarMaterial(revista2);
         System.out.println();
@@ -61,7 +63,13 @@ registrarMiembro() retorna false. Verifica la membresía de un usuario registrad
         Polimorfismo
 Llama mostrarCatalogo() — verifica que cada material muestra su tipo correcto (Libro o Revista) sin un if
 en el código de mostrarCatalogo().
+■ ¿Qué acaba de pasar en mostrarCatalogo()?
+Recorriste un Map donde los objetos son Libro y Revista. Llamaste mostrarInfo() sobre cada uno.
+mostrarInfo() llama getTipo() — que es abstracto en Material. En runtime, Java supo que este objeto es
+un Libro y llamó su ge
          */
+
+
         sistema.mostrarCatalogo();
 
     }
